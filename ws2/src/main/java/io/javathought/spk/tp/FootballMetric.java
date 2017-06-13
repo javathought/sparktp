@@ -7,6 +7,7 @@ import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SQLContext;
 import org.apache.spark.sql.Dataset;
+import org.apache.spark.sql.SaveMode;
 import org.apache.spark.sql.sources.In;
 import scala.Tuple2;
 
@@ -31,8 +32,7 @@ public class FootballMetric {
 //		nettoie(args[0]);
 
 //        mostLicenseRdd(args[0], context);
-        mostLicenseSql(args[0], context);
-
+        mostLicenseSql(args[0], args[1], context);
 
 		context.close();
 
@@ -84,21 +84,54 @@ public class FootballMetric {
 
     }
 
-    private static void mostLicenseSql(String arg, JavaSparkContext context) {
+    private static void mostLicenseSql(String datas, String fedesFiles, JavaSparkContext context) {
         SQLContext sqlContext = new SQLContext(context);
         Dataset<Row> csv = sqlContext.read()
                 .format("csv")
                 .option("header", "true")
                 .option("delimiter", ";")
                 .option("inferSchema", "true")
-                .load(arg);
+                .load(datas);
         csv.cache();
-		csv.select(col("fed_2012"), col("l_2012"))
-                .groupBy(col("fed_2012")).sum("l_2012")
+		Dataset<Row> resultat = csv.select(col("fed_2012"), col("l_2012"))
+                .groupBy(col("fed_2012")).sum("l_2012");
+
+        resultat
                 .orderBy(col("sum(l_2012)").desc())
-                .show(10);
+                .limit(10)
+                .show();
+
+/*        Dataset<Row> myRows = sqlContext.read()
+                .format("jdbc")
+                .option("url","jdbc:mysql://localhost")
+                .option("dbtable", "spk.stat_licences")
+                .option("user", "root")
+                .option("password", "admin")
+                .load();
+
+        myRows.printSchema();*/
+
+        Dataset<Row> fedes = sqlContext.read()
+                .format("json")
+                .load(fedesFiles);
+
+        fedes.show();
+
+        resultat
+                .withColumnRenamed("fed_2012", "code")
+                .withColumnRenamed("sum(l_2012)", "nb")
+                .join(fedes, "code")
+                .write().mode(SaveMode.Overwrite)
+                .format("jdbc")
+                .option("url","jdbc:mysql://localhost")
+                .option("dbtable", "spk.stat_licences")
+                .option("user", "root")
+                .option("password", "admin")
+        .save();
 
     }
+
+
 
 
 }
