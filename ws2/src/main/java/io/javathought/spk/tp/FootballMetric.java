@@ -10,9 +10,16 @@ import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.sources.In;
 import scala.Tuple2;
 
-import static org.apache.spark.sql.functions.col;
-import static org.apache.spark.sql.functions.substring;
-import static org.apache.spark.sql.functions.sum;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import static org.apache.spark.sql.functions.*;
 
 
 public class FootballMetric {
@@ -21,13 +28,32 @@ public class FootballMetric {
 		SparkConf sparkConf = new SparkConf().setMaster("local[*]").setAppName("footballMetrics");
 		JavaSparkContext context = new JavaSparkContext(sparkConf);
 
-        mostLicenseRdd(args[0], context);
-//        mostLicenseSql(args[0], context);
+//		nettoie(args[0]);
+
+//        mostLicenseRdd(args[0], context);
+        mostLicenseSql(args[0], context);
 
 
 		context.close();
 
 	}
+
+    private static void nettoie(String arg) {
+
+            Charset charset = Charset.forName("UTF-8");
+            Path path = Paths.get(arg);
+            Path pathOut = Paths.get(arg + "new");
+            try (BufferedReader reader = Files.newBufferedReader(path, charset);
+                    BufferedWriter writer = Files.newBufferedWriter(pathOut, charset)) {
+                String line = null;
+                while ((line = reader.readLine()) != null) {
+
+                    writer.write(line.substring(1, line.length() - 1) + "\n");
+                }
+            } catch (IOException x) {
+                System.err.format("IOException: %s%n", x);
+            }
+    }
 
     private static void mostLicenseRdd(String arg, JavaSparkContext context) {
         JavaRDD<String> lines = context.textFile(arg);
@@ -47,20 +73,31 @@ public class FootballMetric {
                 })
                 .reduceByKey((a, b) ->
                     new Tuple2<Integer, Integer>(a._1 + b._1, a._2 + b._2) );
-        deptFootRows.mapValues( dept -> dept._2 * 1.0 / dept._1)
+        JavaPairRDD<String, Double> stats = deptFootRows.mapValues( dept -> dept._2 * 1.0 / dept._1);
+        stats.cache();
 //                .collect()
-                .top(10, new DeptComparator() )
+        stats.top(10, new DeptComparator() )
                 .forEach(r -> System.out.println(String.format("%s %f", r._1, r._2)));
+
+        System.out.println("-------------------------------------------------");
+        stats.lookup("75").forEach(System.out::println);
+
     }
 
     private static void mostLicenseSql(String arg, JavaSparkContext context) {
         SQLContext sqlContext = new SQLContext(context);
-        Dataset<Row> csv = sqlContext.read().format("csv").option("header", "true").load(arg);
+        Dataset<Row> csv = sqlContext.read()
+                .format("csv")
+                .option("header", "true")
+                .option("delimiter", ";")
+                .option("inferSchema", "true")
+                .load(arg);
         csv.cache();
-        csv.select(sum(col("l_2012"))).where(col("fed_2012").equalTo(111)).show();
-//		csv.select(substring(col("cog2"), 0, 2), col("l_2012"), col("pop_2010")).where(col("fed_2012").equalTo(111));
+		csv.select(col("fed_2012"), col("l_2012"))
+                .groupBy(col("fed_2012")).sum("l_2012")
+                .orderBy(col("sum(l_2012)").desc())
+                .show(10);
 
-//        Dataset<Row> res.
     }
 
 
