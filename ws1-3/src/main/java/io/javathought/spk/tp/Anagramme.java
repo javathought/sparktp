@@ -5,11 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.Collator;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
+import org.spark_project.guava.collect.Lists;
 import scala.Tuple2;
 
 import org.apache.spark.SparkConf;
@@ -26,7 +24,7 @@ import org.json.simple.parser.ParseException;
 public class Anagramme {
 
 	public static void main(String[] args) {
-		SparkConf sparkConf = new SparkConf().setMaster("local[*]").setAppName("WordCount");
+		SparkConf sparkConf = new SparkConf().setMaster("local[*]").setAppName("Anagrammes");
 		JavaSparkContext context = new JavaSparkContext(sparkConf);
 
 		JavaRDD<String> frenchWords = context.textFile(args[0]);
@@ -40,10 +38,11 @@ public class Anagramme {
 		
 		JavaRDD<List<String>> anagrammes = 
 				words
-//				.reduceByKey(new Function2<String, String, String>(){
-//					public String call(String x, String y){ return x + " " + y;}}
-//				)
-				.aggregateByKey( 
+/*				.reduceByKey(new Function2<String, String, String>(){
+					public String call(String x, String y){ return x + " " + y;}}
+				)
+*/
+/*				.aggregateByKey(
 					new ArrayList<String>(), 
 					new Function2<List<String>, String, List<String>>(){
 						public List<String> call(List<String> a, String x){ 
@@ -58,7 +57,10 @@ public class Anagramme {
 					
 				)
 				.filter(lw -> lw._2.size() > 1)
-				.map(a -> a._2)
+*/
+				.groupByKey()
+				.filter(lw -> ((Collection<?>)lw._2).size() > 1)
+				.map(a -> Lists.newArrayList(a._2))
 				;
 						
 		anagrammes.saveAsTextFile(outputFile);
