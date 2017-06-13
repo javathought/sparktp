@@ -20,14 +20,14 @@
 	        <goal>shade</goal>
 	      </goals>
 	      <configuration>
-<!-- 	        <transformers> -->
-<!-- 	          <transformer -->
-<!-- 	            implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer"> -->
-<!-- 	            <manifestEntries> -->
-<!-- 	              <Main-Class>io.javathought.spk.tp.WordCount</Main-Class> -->
-<!-- 	            </manifestEntries> -->
-<!-- 	          </transformer> -->
-<!-- 	        </transformers> -->
+ 	        <transformers>
+ 	          <transformer
+ 	            implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+ 	            <manifestEntries>
+ 	              <Main-Class>io.javathought.spk.tp.WordCount</Main-Class>
+ 	            </manifestEntries>
+ 	          </transformer>
+ 	        </transformers>
 	        <artifactSet/>
 	        <outputFile>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar</outputFile>
 	      </configuration>
@@ -35,43 +35,6 @@
 	  </executions>
 	</plugin>
 
-
-
-
-
-
-<!-- 		<plugin> -->
-<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
-<!-- 				<artifactId>maven-jar-plugin</artifactId> -->
-<!-- 				<configuration> -->
-<!-- 					<archive> -->
-<!-- 						<manifest> -->
-<!-- 							<mainClass>io.javathought.spk.tp.WordCount</mainClass> -->
-<!-- 						</manifest> -->
-<!-- 					</archive> -->
-<!-- 				</configuration> -->
-<!-- 			</plugin> -->
-
-<!--       <plugin> -->
-<!--             <groupId>org.apache.maven.plugins</groupId> -->
-<!--             <artifactId>maven-assembly-plugin</artifactId> -->
-<!--             <version>3.0.0</version> -->
-<!--             <configuration> -->
-<!--                 <descriptorRefs> -->
-<!--                     <descriptorRef>jar-with-dependencies</descriptorRef> -->
-<!--                 </descriptorRefs> -->
-
-<!--             </configuration> -->
-<!--             <executions> -->
-<!--                 <execution> -->
-<!--                     <id>assemble-all</id> -->
-<!--                     <phase>package</phase> -->
-<!--                     <goals> -->
-<!--                         <goal>single</goal> -->
-<!--                     </goals> -->
-<!--                 </execution> -->
-<!--             </executions> -->
-<!--         </plugin> -->
 			
   	</plugins>
   </build>
