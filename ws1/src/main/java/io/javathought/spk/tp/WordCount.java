@@ -1,5 +1,6 @@
 package io.javathought.spk.tp;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -26,19 +27,18 @@ public class WordCount {
 		SparkConf sparkConf = new SparkConf().setMaster("local[*]").setAppName("WordCount");
 		JavaSparkContext context = new JavaSparkContext(sparkConf);
 
-		 String outputFile = "count-sherlock-2"; // args[0];
+		 String outputFile = args[2]; 
 		 final List<String> stopWords = new ArrayList<String>();
 		
 		try {
-			 getStopWords(stopWords);
+			 getStopWords(args[1], stopWords);
 		} catch (IOException | ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.exit(1);
 		}
 		
-		JavaRDD<String> sherlockLines = context.textFile(WordCount.class.
-                getClassLoader().getResource("sherlock.txt").getPath());
+		JavaRDD<String> sherlockLines = context.textFile(args[0]);
 		
 		sherlockLines.cache();
 		
@@ -64,11 +64,10 @@ public class WordCount {
 
 	}
 	
-	private static void getStopWords(List<String> stopWords) throws IOException, ParseException {
+	private static void getStopWords(String filename, List<String> stopWords) throws IOException, ParseException {
 		JSONParser parser = new JSONParser();
 		
-        Object obj = parser.parse(new FileReader(WordCount.class.
-                getClassLoader().getResource("stop-words-en.json").getFile()));
+        Object obj = parser.parse(new FileReader(new File(filename)));
 
         JSONArray jsonObject = (JSONArray) obj;
 		
