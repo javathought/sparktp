@@ -1,0 +1,89 @@
+101	Fédération Française d'athlétisme
+102	Fédération Française des sociétés d'aviron   
+103	Fédération Française de badminton
+105	Fédération Française de basketball
+106	Fédération Française de boxe
+107	Fédération Française de canoë-kayak
+108	Fédération Française de cyclisme
+109	Fédération Française d'équitation
+110	Fédération Française d'escrime
+111	Fédération Française de football
+112	Fédération Française des sports de glace
+113	Fédération Française de gymnastique
+114	Fédération Française d’haltérophilie, de musculation, force athlétique et culturisme
+115	Fédération Française de handball
+116	Fédération Française de hockey
+117	Fédération Française de judo-jujitsu, kendo et disciplines associées
+118	Fédération Française de lutte
+119	Fédération Française de natation
+120	Fédération française de pentathlon moderne
+121	Fédération Française de ski
+122	Fédération Française de taekwondo et disciplines associées
+123	Fédération Française de tennis
+124	Fédération Française de tennis de Table
+125	Fédération Française de tir
+126	Fédération Française de tir à l'arc
+127	Fédération Française de triathlon
+128	Fédération Française de voile
+129	Fédération Française de volleyball
+131	Fédération Française de hockey sur glace
+132	Fédération Française de golf
+201	Fédération Française d'aéromodélisme
+202	Fédération Nationale aéronautique
+203	Fédération Française d'aérostation
+204	Fédération Française d'aïkido, aïkibudo et affinitaires
+205	Fédération Française d'aïkido et de budo
+206	Fédération Française du sport automobile 
+208	Fédération Française de ballon au poing
+209	Fédération Française de ball-trap
+210	Fédération Française des sports de billard
+212	Fédération Française de savate, boxe française et disciplines associées
+213	Fédération Française de bowling et de sports de quilles
+215	Fédération Française de la course camarguaise
+216	Fédération Française de la course landaise
+218	Fédération Française de cyclotourisme
+219	Fédération Française de danse 
+221	Fédération Française d'études et sports sous-marins
+222	Fédération Française de football américain
+224	Fédération Française de giraviation
+226	Fédération Française de javelot tir sur cible
+228	Fédération Française de joutes et sauvetage nautique
+229	Fédération Française de karaté et disciplines associées
+232	Fédération Française de la montagne et de l'escalade
+233	Fédération Française de motocyclisme
+234	Fédération Française motonautique 
+237	Fédération Française de parachutisme
+238	Fédération Française de pêche sportive au coup
+239	Fédération Française des pêcheurs en Mer
+240	Fédération Française de pêche à la mouche et au lancer
+241	Fédération Française de pelote basque 
+242	Fédération Française de pétanque et jeu provençal
+243	Fédération Française de planeur ultra-léger motorisé
+244	Fédération Française de Pulka et Traîneau à Chiens
+245	Fédération Française de la randonnée pédestre
+246	Fédération Française de roller skating
+248	Fédération Française de rugby à XIII
+249	Fédération Française de sauvetage et secourisme
+254	Fédération Française de WUSHU Arts énergétiques et Martiaux Chinois
+258	Fédération Française de vol libre
+262	Fédération Française de baseball et softball
+264	Fédération Flying Disc France
+401	Fédération Française des clubs alpins et de montagne
+402	Fédération Française d'éducation physique et de gymnastique volontaire
+403	Fédération Française pour l'entraînement physique dans le monde moderne
+404	Fédération Française de la retraite sportive
+405	Fédération Française du sport travailliste
+407	Fédération nationale du sport en milieu rural
+408	Fédération sportive et culturelle de France 
+409	Fédération Française Maccabi
+411	Fédération sportive de la Police Nationale
+413	Union Française des oeuvres laïques d'éducation physique (UFOLEP)
+415	Fédération Française omnsisports des personnels de l'éducation nationale et jeunesse et sports
+417	Union Nationale Sportive Léo Lagrange 
+418	Fédération Française du sport d'entreprise
+420	Fédération sportive des ASPTT
+501	Fédération Française handisport
+503	Fédération Française du sport adapté
+601	Fédération française du sport universitaire
+603	Union nationale des clubs universitaires
+604	Union nationale du sport scolaire (UNSS)

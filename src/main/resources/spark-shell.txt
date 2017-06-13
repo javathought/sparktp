@@ -1,0 +1,9 @@
+val sqlContext = new org.apache.spark.sql.SQLContext(sc)
+
+val employeeData = sqlContext.jsonFile("/home/user/workspace/sparktp/employee.json")
+
+employeeData.printSchema()
+
+employeeData.filter(col("age") > 23).show()
+
+employeeData.groupBy(col("age")).count().show()

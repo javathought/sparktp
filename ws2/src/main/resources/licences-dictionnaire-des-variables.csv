@@ -1,0 +1,72 @@
+Recensement des licences et clubs 2012;;;
+Liste des variables disponibles;;;
+;;;
+Nom_Colonne;TypeRubrique;Longueur;Légende
+cog2;varchar;5;Code commune
+LIBELLE;varchar;45;Libellé officiel de la commune
+fed_2012;varchar;3;Code de la fédération
+"VARIABLES ""Licences""";;;
+l_2012;int;8;Nombre de licences
+l_0_4_2012;int;8;Nombre de licences 0-4 ans
+l_5_9_2012;int;8;Nombre de licences 5-9 ans
+l_10_14_2012;int;8;Nombre de licences 10-14 ans
+l_15_19_2012;int;8;Nombre de licences 15-19 ans
+l_20_29_2012;int;8;Nombre de licences 20-29 ans
+l_30_44_2012;int;8;Nombre de licences 30-44 ans
+l_45_59_2012;int;8;Nombre de licences 45-59 ans
+l_60_74_2012;int;8;Nombre de licences 60-74 ans
+l_75_99_2012;int;8;Nombre de licences 75 ans et plus
+l_f_2012;int;8;Nombre de licences femmes
+l_0_4_f_2012;int;8;Nombre de licences femmes 0-4 ans
+l_5_9_f_2012;int;8;Nombre de licences femmes 5-9 ans
+l_10_14_f_2012;int;8;Nombre de licences femmes 10-14 ans
+l_15_19_f_2012;int;8;Nombre de licences femmes 15-19 ans
+l_20_29_f_2012;int;8;Nombre de licences femmes 20-29 ans
+l_30_44_f_2012;int;8;Nombre de licences femmes 30-44 ans
+l_45_59_f_2012;int;8;Nombre de licences femmes 45-59 ans
+l_60_74_f_2012;int;8;Nombre de licences femmes 60-74 ans
+l_75_99_f_2012;int;8;Nombre de licences femmes 75 ans et plus
+l_h_2012;int;8;Nombre de licences hommes
+l_0_4_h_2012;int;8;Nombre de licences hommes 0-4 ans
+l_5_9_h_2012;int;8;Nombre de licences hommes 5-9 ans
+l_10_14_h_2012;int;8;Nombre de licences hommes 10-14 ans
+l_15_19_h_2012;int;8;Nombre de licences hommes 15-19 ans
+l_20_29_h_2012;int;8;Nombre de licences hommes 20-29 ans
+l_30_44_h_2012;int;8;Nombre de licences hommes 30-44 ans
+l_45_59_h_2012;int;8;Nombre de licences hommes 45-59 ans
+l_60_74_h_2012;int;8;Nombre de licences hommes 60-74 ans
+l_75_99_h_2012;int;8;Nombre de licences hommes 75 ans et plus
+l_zus_2012;int;8;Nombre de licences en ZUS
+l_zus_f_2012;int;8;Nombre de licences femmes en ZUS
+l_zus_h_2012;int;8;Nombre de licences hommes en ZUS
+"VARIABLES ""Commune""";;;
+pop_2010;int;8;Population communale 2010
+pop_0_4_2010;int;8;Population communale 2010 0-4 ans 
+pop_5_9_2010;int;8;Population communale 2010 5-9 ans 
+pop_10_14_2010;int;8;Population communale 2010 10-14 ans 
+pop_15_19_2010;int;8;Population communale 2010 15-19 ans 
+pop_20_29_2010;int;8;Population communale 2010 20-29 ans 
+pop_30_44_2010;int;8;Population communale 2010 30-44 ans 
+pop_45_59_2010;int;8;Population communale 2010 45-59 ans 
+pop_60_74_2010;int;8;Population communale 2010 60-74 ans 
+pop_75_99_2010;int;8;Population communale 2010 75 ans et plus 
+popf_2010;int;8;Population communale 2010 femmes
+popf_0_4_2010;int;8;Population communale 2010 femmes 0-4 ans 
+popf_5_9_2010;int;8;Population communale 2010 femmes 5-9 ans 
+popf_10_14_2010;int;8;Population communale 2010 femmes 10-14 ans 
+popf_15_19_2010;int;8;Population communale 2010 femmes 15-19 ans 
+popf_20_29_2010;int;8;Population communale 2010 femmes 20-29 ans 
+popf_30_44_2010;int;8;Population communale 2010 femmes 30-44 ans 
+popf_45_59_2010;int;8;Population communale 2010 femmes 45-59 ans 
+popf_60_74_2010;int;8;Population communale 2010 femmes 60-74 ans 
+popf_75_99_2010;int;8;Population communale 2010 femmes 75 ans et plus 
+poph_2010;int;8;Population communale 2010 hommes
+poph_0_4_2010;int;8;Population communale 2010 hommes 0-4 ans 
+poph_5_9_2010;int;8;Population communale 2010 hommes 5-9 ans 
+poph_10_14_2010;int;8;Population communale 2010 hommes 10-14 ans 
+poph_15_19_2010;int;8;Population communale 2010 hommes 15-19 ans 
+poph_20_29_2010;int;8;Population communale 2010 hommes 20-29 ans 
+poph_30_44_2010;int;8;Population communale 2010 hommes 30-44 ans 
+poph_45_59_2010;int;8;Population communale 2010 hommes 45-59 ans 
+poph_60_74_2010;int;8;Population communale 2010 hommes 60-74 ans 
+poph_75_99_2010;int;8;Population communale 2010 hommes 75 ans et plus 

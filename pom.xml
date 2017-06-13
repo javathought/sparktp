@@ -8,6 +8,7 @@
   <modules>
   	<module>ws1</module>
   	<module>ws1-3</module>
+    <module>ws2</module>
   </modules>
   
     <properties>
@@ -21,6 +22,7 @@
       <groupId>org.apache.spark</groupId>
       <artifactId>spark-core_2.11</artifactId>
       <version>${spark.version}</version>
+      <!--<scope>provided</scope>-->
   </dependency>
   <dependency>
     <groupId>com.googlecode.json-simple</groupId>
