@@ -33,6 +33,8 @@ public class StreamingCheck {
 //                FlumeUtils.createPollingStream(ssc, "localhost", 4444);
         // pollingStream generate Connection refused exception
 
+        final Jedis jedis = new Jedis(LOCALHOST);
+
         JavaDStream<String> datas = flumeStream.map(e -> new String(e.event().getBody().array(), java.nio.charset.StandardCharsets.UTF_8));
 
         JavaDStream<String> words = datas
@@ -49,20 +51,15 @@ public class StreamingCheck {
         words.print();
         words.count().print();
 
-//        jedis.incrBy("runned tasks", 1);
+        jedis.incrBy("runned tasks", 1);
 
-        wc.foreachRDD(rdd -> {
-            if (!rdd.isEmpty()) rdd
-                    .foreach(p -> {        Jedis jedis = new Jedis(LOCALHOST);
-                        jedis.incrBy(p._1, p._2);
-                        jedis.close();
-                    });
-        });
+        wc.foreachRDD(rdd -> rdd.collect().forEach(p -> jedis.incrBy(p._1, p._2)));
 
         ssc.start();
         try {
             ssc.awaitTermination();
         } catch (InterruptedException e) {}
+        jedis.close();
 
 
     }
