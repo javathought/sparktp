@@ -9,6 +9,7 @@
   	<module>ws1</module>
   	<module>ws1-3</module>
     <module>ws2</module>
+      <module>ws3</module>
   </modules>
   
     <properties>
